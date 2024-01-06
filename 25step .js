@@ -1,7 +1,5 @@
-/*Step 24
-You now have a small bug. When you try to access a property of an object and the property doesn't exist, you get undefined. This means if the dessert isn't already present in the totalCountPerProduct object, you end up trying to add 1 to undefined, which results in NaN.
-
-To fix this, you can use the || operator to set the value to 0 if it doesn't exist. Wrap your right-hand totalCountPerProduct[data.id] in parentheses, and add || 0 to the end of the expression.*/
+/*Step 25Passed
+Now you need to get prepared to update the display with the new product the user added. Declare a currentProductCount variable, and assign it the value of the totalCountPerProduct object's property matching the id of product.*/
 //1step
 const cartContainer = document.getElementById("cart-container");
 const productsContainer = document.getElementById("products-container");
@@ -253,7 +251,7 @@ class ShoppingCart {
     });
   }
 }*/
-//24step
+/*24step
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -271,5 +269,26 @@ class ShoppingCart {
       totalCountPerProduct[dessert.id] =
         (totalCountPerProduct[dessert.id] || 0) + 1;
     });
+  }
+}*/
+//25step
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+    this.total = 0;
+    this.taxRate = 8.25;
+  }
+
+  addItem(id, products) {
+    const product = products.find((item) => item.id === id);
+    const { name, price } = product;
+    this.items.push(product);
+
+    const totalCountPerProduct = {};
+    this.items.forEach((dessert) => {
+      totalCountPerProduct[dessert.id] =
+        (totalCountPerProduct[dessert.id] || 0) + 1;
+    });
+    const currentProductCount = totalCountPerProduct[product.id];
   }
 }

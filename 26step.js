@@ -1,6 +1,5 @@
 /*Step 25Passed
 Now you need to get prepared to update the display with the new product the user added. Declare a currentProductCount variable, and assign it the value of the totalCountPerProduct object's property matching the id of product.*/
-
 //1step
 const cartContainer = document.getElementById("cart-container");
 const productsContainer = document.getElementById("products-container");
@@ -111,7 +110,7 @@ products.forEach(({ name, id, price, category }) => {
   // Használd a hozzáadás értékadó operátort, hogy hozzáadd a HTML kódot minden termékhez
   dessertCards.innerHTML += ``;
 });*/
-//11step
+/*11step
 products.forEach(({ name, id, price, category }) => {
   // Használd a hozzáadás értékadó operátort, hogy hozzáadd a HTML kódot minden termékhez
   dessertCards.innerHTML += `
@@ -120,7 +119,17 @@ products.forEach(({ name, id, price, category }) => {
       <!-- Add további részleteket vagy stílust igény szerint -->
     </div>
   `;
-});
+});*/
+/*12step
+products.forEach(({ name, id, price, category }) => {
+  dessertCards.innerHTML += `
+      <div class="dessert-card">
+        <h2>${name}</h2>
+        <p class="dessert-price">$${price}</p>
+        <p class="product-category">Category: ${category}</p>
+      </div>
+    `;
+});*/
 //13step
 products.forEach(({ name, id, price, category }) => {
   dessertCards.innerHTML += `
@@ -145,7 +154,7 @@ class ShoppingCart {
     this.total = 0;
     this.taxRate = 8.25;
   }
-} */
+}*/
 /*17step
 class ShoppingCart {
   constructor() {
@@ -166,7 +175,7 @@ class ShoppingCart {
     const product = products.find((item) => item.id === id);
   }
 }*/
-/*19step
+/*step19
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -191,7 +200,7 @@ class ShoppingCart {
     const { name, price } = product;
     this.items.push(product);
   }
-} */
+}*/
 /*21step
 class ShoppingCart {
   constructor() {
@@ -205,7 +214,7 @@ class ShoppingCart {
     this.items.push(product);
     const totalCountPerProduct = {};
   }
-}*/
+} */
 /*22step
 class ShoppingCart {
   constructor() {
@@ -241,8 +250,8 @@ class ShoppingCart {
       totalCountPerProduct[dessert.id] = totalCountPerProduct[dessert.id] + 1;
     });
   }
-} */
-//24step
+}*/
+/*24step
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -261,5 +270,50 @@ class ShoppingCart {
         (totalCountPerProduct[dessert.id] || 0) + 1;
     });
   }
+}*/
+/*25step
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+    this.total = 0;
+    this.taxRate = 8.25;
+  }
+
+  addItem(id, products) {
+    const product = products.find((item) => item.id === id);
+    const { name, price } = product;
+    this.items.push(product);
+
+    const totalCountPerProduct = {};
+    this.items.forEach((dessert) => {
+      totalCountPerProduct[dessert.id] =
+        (totalCountPerProduct[dessert.id] || 0) + 1;
+    });
+    const currentProductCount = totalCountPerProduct[product.id];
+  }
+}*/
+//26step
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+    this.total = 0;
+    this.taxRate = 8.25;
+  }
+
+  addItem(id, products) {
+    const product = products.find((item) => item.id === id);
+    const { name, price } = product;
+    this.items.push(product);
+
+    const totalCountPerProduct = {};
+    this.items.forEach((dessert) => {
+      totalCountPerProduct[dessert.id] =
+        (totalCountPerProduct[dessert.id] || 0) + 1;
+    });
+
+    const currentProductCount = totalCountPerProduct[product.id];
+    const currentProductCountSpan = document.getElementById(
+      `product-count-for-id${product.id}`
+    );
+  }
 }
-//25step?

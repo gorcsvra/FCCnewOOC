@@ -242,7 +242,7 @@ class ShoppingCart {
     });
   }
 } */
-//24step
+/*24step
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -261,5 +261,26 @@ class ShoppingCart {
         (totalCountPerProduct[dessert.id] || 0) + 1;
     });
   }
+} */
+//25step
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+    this.total = 0;
+    this.taxRate = 8.25;
+  }
+
+  addItem(id, products) {
+    const product = products.find((item) => item.id === id);
+    const { name, price } = product;
+    this.items.push(product);
+
+    const totalCountPerProduct = {};
+    this.items.forEach((dessert) => {
+      totalCountPerProduct[dessert.id] =
+        (totalCountPerProduct[dessert.id] || 0) + 1;
+    });
+    const currentProductCount = totalCountPerProduct[product.id];
+  }
 }
-//25step?
+//26step?
